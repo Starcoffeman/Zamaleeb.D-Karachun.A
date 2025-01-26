@@ -1,0 +1,53 @@
+﻿<Window x:Class="Zamaleeb.D_Karachun.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zamaleeb.D_Karachun"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Height="100" Source="task.png" Margin="10" ToolTip="Картинка"/>
+
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel>
+                <Label Content="X" Margin="10"/>
+                <Label Content="Y" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel Margin="10">
+                <TextBox x:Name="XTextBox" Width="60" Margin="10" ToolTip="x"/>
+                <TextBox x:Name="YTextBox" Width="60" Margin="10" ToolTip="y"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <RadioButton x:Name="ShRadioButton" Content="sh(x)" Margin="10" ToolTip="Гиперболический синус"/>
+                <RadioButton x:Name="SquareRadioButton" Content="x^2" Margin="10" ToolTip="Квадрат числа x"/>
+                <RadioButton x:Name="ExpRadioButton" Content="e^x" Margin="10" ToolTip="Экспонента числа x"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+                <Button Content="Вычислить" Margin="10" Width="100" Height="29" Click="CalculateButton_Click"/>
+                <Button Content="Очистить" Margin="10" Width="100" Height="29" Click="ClearButton_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Label Content="Ответ" Margin="10"/>
+            <TextBox x:Name="ResultTextBox" Text="0" HorizontalAlignment="Right" Width="100" Margin="10" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Window>
