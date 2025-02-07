@@ -9,6 +9,16 @@ namespace Zamaleeb.D_Karachun {
         }
         private void CalculateButton_Click(object sender, RoutedEventArgs e) {
             try {
+
+                if (string.IsNullOrWhiteSpace(XTextBox.Text)) {
+                    MessageBox.Show("Поле X не должно быть пустым!", "Ошибка");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(YTextBox.Text)) {
+                    MessageBox.Show("Поле Y не должно быть пустым!", "Ошибка");
+                    return;
+                }
+
                 if (!double.TryParse(XTextBox.Text, out double x)) {
                     MessageBox.Show("Введено некорректное значение X!", "Ошибка");
                     return;
@@ -20,16 +30,18 @@ namespace Zamaleeb.D_Karachun {
 
                 Func<double, double> selectedFunction = SelectFunction();
                 if (selectedFunction == null) {
-                    MessageBox.Show("Пожалуйста, выберите функцию");
+                    MessageBox.Show("Пожалуйста, выберите функцию", "Ошибка");
                     return;
                 }
 
                 double result = CalculateB(x, y, selectedFunction);
                 ResultTextBox.Text = result.ToString("F4");
-            } catch (Exception ex) {
-                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка");
             }
         }
+
 
         private void ClearButton_Click(object sender, RoutedEventArgs e) {
             XTextBox.Clear();
