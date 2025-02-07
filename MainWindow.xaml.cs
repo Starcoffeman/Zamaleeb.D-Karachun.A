@@ -43,18 +43,23 @@ namespace Zamaleeb.D_Karachun {
             if (ExpRadioButton.IsChecked == true) return Math.Exp;
             return null;
         }
-
         private double CalculateB(double x, double y, Func<double, double> f) {
             if (y == 0) {
-                return x == 0 ? 0 : Math.Pow(Math.Pow(f(x), 2) + y, 3);
+                return 0; 
             }
 
             if (x / y > 0) {
                 return Math.Log(f(x)) + Math.Pow(Math.Pow(f(x), 2) + y, 3);
-            } else {
-                return Math.Log(Math.Abs(f(x)) / Math.Abs(y)) + Math.Pow(f(x) + y, 3);
+            }
+            else if (x / y < 0) {
+                return Math.Log(Math.Abs(f(x) / y)) + Math.Pow(f(x) + y, 3);
+            }
+            else { 
+                return Math.Pow(Math.Pow(f(x), 2) + y, 3);
             }
         }
+
+
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Вы точно хотите выйти?", "Осторожно", MessageBoxButton.YesNo);
